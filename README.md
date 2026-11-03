@@ -55,7 +55,7 @@ Start-Process pythonw.exe -ArgumentList "D:\Decoder\main.py"
 | Исходник | Доступные цели |
 |----------|----------------|
 | Видео (mp4, avi, mkv, webm, mov) | MP4, AVI, WEBM, GIF, MKV |
-| Изображения (png, jpg, webp, ico, bmp) | PNG, JPG, WEBP, ICO |
+| Изображения (png, jpg, webp, ico, bmp, heic, heif) | PNG, JPG, WEBP, ICO, BMP, TIFF, GIF, HEIC |
 
 ## Структура
 

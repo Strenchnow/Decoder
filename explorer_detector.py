@@ -15,10 +15,10 @@ import pythoncom
 USER32 = ctypes.WinDLL("user32", use_last_error=True)
 
 VIDEO_SOURCE_EXTS = {"mp4", "avi", "mkv", "webm", "mov", "gif", "wmv", "flv", "m4v"}
-IMAGE_SOURCE_EXTS = {"png", "jpg", "jpeg", "webp", "ico", "bmp", "tiff", "tif", "gif"}
+IMAGE_SOURCE_EXTS = {"png", "jpg", "jpeg", "webp", "ico", "bmp", "tiff", "tif", "gif", "heic", "heif"}
 
 VIDEO_TARGETS = ["MP4", "AVI", "WEBM", "MKV", "MOV", "GIF"]
-IMAGE_TARGETS = ["PNG", "JPG", "WEBP", "ICO", "BMP", "TIFF", "GIF"]
+IMAGE_TARGETS = ["PNG", "JPG", "WEBP", "ICO", "BMP", "TIFF", "GIF", "HEIC"]
 
 GA_ROOT = 2
 
@@ -89,7 +89,7 @@ def _detect_formats(path):
         cur = ext.upper()
         return [t for t in VIDEO_TARGETS if t != cur]
     if ext in IMAGE_SOURCE_EXTS:
-        cur = {"jpeg": "JPG", "tif": "TIFF"}.get(ext, ext.upper())
+        cur = {"jpeg": "JPG", "tif": "TIFF", "heif": "HEIC"}.get(ext, ext.upper())
         return [t for t in IMAGE_TARGETS if t != cur]
     return None
 

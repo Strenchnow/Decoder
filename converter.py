@@ -99,6 +99,8 @@ def _codec_args_for(target: str) -> list:
         return ["-vf",
                 "scale=256:256:force_original_aspect_ratio=decrease,"
                 "pad=256:256:(ow-iw)/2:(oh-ih)/2"]
+    if target in ("heic", "heif"):
+        return ["-c:v", "libx265", "-q:v", "2", "-update", "1"]
     if target in ("jpg", "jpeg"):
         return ["-q:v", "2", "-update", "1"]
     if target == "webp":
@@ -132,7 +134,7 @@ def convert_file(input_path: str, target_format: str) -> "tuple[bool, str]":
 
 
 _VIDEO_EXTS = {"mp4", "avi", "mkv", "webm", "mov", "gif"}
-_IMAGE_EXTS = {"png", "jpg", "jpeg", "webp", "ico", "bmp"}
+_IMAGE_EXTS = {"png", "jpg", "jpeg", "webp", "ico", "bmp", "tiff", "tif", "gif", "heic", "heif"}
 
 
 def _convert_blocking(input_path, target_format) -> "tuple[bool, str]":
